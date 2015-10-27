@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>QR Code Generator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/css/normalize.css">
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/css/foundation.min.css">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.1/js/foundation.min.js"></script>
+		<style>
+
+		body {
+			background-color: #66CCFF;
+		}
+			
+		.j {
+			background-image: url(http://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/zero/1x/ic_zero_inbox.png);
+			background-size: 228px 309px;
+			height: 309px;
+			width: 228px;
+			position: absolute;
+			top: 150%;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-50%);
+		}
+
+		</style>
+	</head>
+	<body ng-app="nextHolidayApp">
+		<div class="row">
+			<div class="medium-6 columns medium-offset-3">
+				<div class="j"></div>
+
+				<h3>When is your Next Holiday?</h3>
+
+				<div class="row collapse">
+					<div class="small-10 columns">	
+						Website or Link:<br>
+						<input type="text" id="url">
+						<br>
+						<div id="address"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$('#url').change(function () {
+				var input = encodeURIComponent($('#url').val());
+				var size = "300";
+				var qrImage = "https://chart.googleapis.com/chart?chs="+size+"x"+size+"&cht=qr&&&chld=L|1&chl=" + input;
+				$("#address").html("<img src='" + qrImage + "'/>");
+			});	
+		</script>
+		
+	</body>
+</html>
